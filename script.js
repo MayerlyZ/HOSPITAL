@@ -81,7 +81,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Obtener valores del formulario
     const name = document.getElementById("patientName").value.trim();
+    // Capitaliza la primera letra de cada palabra
+      const capitalizedName = name
+        .toLowerCase()
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+
     const age = parseInt(document.getElementById("patientAge").value.trim());
+
 
     // Validar datos
     if (!name || isNaN(age) || age < 1) {
@@ -93,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const editingIndex = form.dataset.editingIndex;
     if (editingIndex !== undefined) {
       // Actualizar paciente existente
-      patients[editingIndex] = { name, age };
+      patients[editingIndex] = { name: capitalizedName, age };
 
       // Restaurar el texto del botón submit a "Registrar Paciente"
       const submitBtn = form.querySelector("button[type='submit']");
@@ -103,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
       delete form.dataset.editingIndex;
     } else {
       // Agregar nuevo paciente al array
-      patients.push({ name, age });
+      patients.push({ name:capitalizedName, age });
     }
 
     // Guardar en localStorage y actualizar la tabla
