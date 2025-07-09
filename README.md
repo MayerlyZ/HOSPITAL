@@ -1,85 +1,86 @@
-# 🏥 Registro de Pacientes - Consultorio Médico
+# 🏥 Patient Registration - Medical Office
 
-Aplicación web para gestionar pacientes en un consultorio médico con almacenamiento local.
+Web application for managing patients in a medical office with local storage.
 
-![Preview](assets/preview.png) <!-- Add actual image file in your assets folder -->
+## 🌟 Features
 
-## 🌟 Características
+- Full CRUD for patients (Create, Read, Update, Delete)
+- Data persistence with localStorage
+- Interaction counter with sessionStorage
+- Modern, responsive design
+- Form validation
+- Intuitive interface with two panels (form and table)
 
-- **CRUD completo** de pacientes (Crear, Leer, Actualizar, Eliminar)
-- Persistencia de datos con `localStorage`
-- Contador de interacciones con `sessionStorage`
-- Diseño responsive y moderno
-- Validación de formularios
-- Interfaz intuitiva con dos paneles (formulario y tabla)
+## 🚀 How to Use
 
-## 🚀 Cómo Usar
+1. Add Patient:
+- Fill in name and age
+- Click "Register Patient"
 
-1. **Agregar paciente**:
-   - Completa nombre y edad
-   - Click en "Registrar Paciente"
+2. Edit Patient:
+- Click "Edit" in the table
+- Modify fields
+- Click "Update Patient"
 
-2. **Editar paciente**:
-   - Click en "Editar" en la tabla
-   - Modifica los campos
-   - Click en "Actualizar Paciente"
+3. Delete Patient:
+- Click "Delete" next to the record
 
-3. **Eliminar paciente**:
-   - Click en "Eliminar" junto al registro
+4. Delete All:
+- Click "🗑️ Delete All"
 
-4. **Borrar todos**:
-   - Click en "🗑️ Borrar todos"
-
-## 🛠 Tecnologías
+## 🛠 Technologies
 
 - HTML5
-- CSS3 (Flexbox, Grid, efectos visuales)
-- JavaScript Vanilla (ES6+)
+- CSS3
+- Vanilla JavaScript
 - Web Storage API (localStorage, sessionStorage)
 
-## 📂 Estructura de Archivos
+## 📂 File Structure
 
-consultorio-medico/
-├── index.html # Interfaz principal
-├── style.css # Estilos
-├── script.js # Lógica de la aplicación
+doctor-office/
+
+├── index.html # Main interface
+
+├── style.css # Styles
+
+├── script.js # Application logic
+
 └── assets/
-├── img/ # Imágenes
 
+├── img/ # Images
 
-## 🔧 Instalación
+## 🔧 Installation
 
-No se requiere instalación. Solo abre `index.html` en tu navegador.
+No installation required. Just open `index.html` in your browser.
 
 ```bash
-git clone https://github.com/tu-usuario/consultorio-medico.git
-cd consultorio-medico
+git clone https://github.com/MayerlyZ/HOSPITAL.git
+cd HOSPITAL
 
-// Ejemplo de función principal
+// Main function example
 document.addEventListener("DOMContentLoaded", () => {
-  // Gestión del estado de la aplicación
-  let patients = JSON.parse(localStorage.getItem("patients")) || [];
-  
-  // Renderizado de la tabla
-  const renderTable = () => {
-    // Lógica para mostrar pacientes
-  };
-  
-  // Manejo del formulario
-  form.addEventListener("submit", (e) => {
-    // Validación y guardado
-  });
+// Application state management
+let patients = JSON.parse(localStorage.getItem("patients")) || [];
+
+// Table rendering
+const renderTable = () => {
+// Logic to display patients
+};
+
+// Form handling
+form.addEventListener("submit", (e) => {
+// Validation and saving
+});
 });
 
 ```
 
+## 📌 Upcoming Enhancements
 
-## 📌 Próximas Mejoras
+Add filters/search
 
-Añadir filtros/búsqueda
+Export data to CSV/PDF
 
-Exportar datos a CSV/PDF
+Statistics charts
 
-Gráficos de estadísticas
 
-Soporte para múltiples doctores
