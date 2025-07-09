@@ -56,8 +56,8 @@ consultorio-medico/
 No se requiere instalación. Solo abre `index.html` en tu navegador.
 
 ```bash
-git clone https://github.com/tu-usuario/consultorio-medico.git
-cd consultorio-medico
+git clone https://github.com/MayerlyZ/HOSPITAL.git
+cd HOSPITAL
 
 // Ejemplo de función principal
 document.addEventListener("DOMContentLoaded", () => {
