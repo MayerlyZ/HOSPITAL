@@ -32,8 +32,8 @@ Aplicación web para gestionar pacientes en un consultorio médico con almacenam
 ## 🛠 Tecnologías
 
 - HTML5
-- CSS3 (Flexbox, Grid, efectos visuales)
-- JavaScript Vanilla (ES6+)
+- CSS3 
+- JavaScript Vanilla 
 - Web Storage API (localStorage, sessionStorage)
 
 ## 📂 Estructura de Archivos
