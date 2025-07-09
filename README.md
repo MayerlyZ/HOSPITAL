@@ -41,9 +41,13 @@ Aplicación web para gestionar pacientes en un consultorio médico con almacenam
 consultorio-medico/
 
 ├── index.html # Interfaz principal
+
 ├── style.css # Estilos
+
 ├── script.js # Lógica de la aplicación
+
 └── assets/
+
 ├── img/ # Imágenes
 
 
