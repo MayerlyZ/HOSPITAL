@@ -83,4 +83,10 @@ Export data to CSV/PDF
 
 Statistics charts
 
+## Img
+![image](https://github.com/user-attachments/assets/4fe2bd7b-cfa0-40d7-ab8e-ba572a8f17af)
+
+## Url
+https://hopitalmayerly.netlify.app/
+
 
