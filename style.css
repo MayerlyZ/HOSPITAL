@@ -1,0 +1,165 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #bce5fd, #fcfcff);
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  width: 70%;
+  height: 90vh;
+  overflow: hidden;
+  border-radius: 80px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+.left-panel, .right-panel {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left-panel {
+  background: white;
+}
+
+.left-panel h2 {
+  margin-bottom: 10px;
+}
+
+.left-panel form input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  font-size: 1rem;
+}
+
+.left-panel button {
+  padding: 12px;
+  margin-top: 10px;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.left-panel .clear {
+  background-color: #ef4444;
+}
+
+.left-panel .counter {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.right-panel {
+  background: url('./assets/img/borrosa-resumen-de-antecedentes-vista-interior-mirando-hacia-fuera-vacio-vestibulo-de-la-oficina-y-las-puertas-de-entrada-y-la-pared-de-cortina-de-vidrio-con-marco.jpg') center/cover;
+  position: relative;
+  color: white;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.right-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.right-panel h3 {
+  position: relative;
+  z-index: 1;
+  font-size: 1.5rem;
+}
+
+.table-wrapper {
+  position: relative;
+  z-index: 1;
+  margin-top: 20px;
+  max-height: 60vh;
+  overflow-y: auto;
+  backdrop-filter: blur(5px);
+}
+
+#patientTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+#patientTable th, #patientTable td {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px;
+  text-align: left;
+}
+
+#patientTable th {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.deleteBtn {
+  background-color: #fa8282;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+  z-index: 2;
+  position: relative;
+}
+
+.filters select,
+.filters input {
+  padding: 8px;
+  border-radius: 15px;
+  border: none;
+  font-size: 0.9rem;
+}
+
+#exportBtn {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  
+}
+.editBtn {
+  background-color: #aca8f8;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  color: white;
+  margin-left: 5px;
+}
+
+.deleteBtn:hover, .editBtn:hover {
+  opacity: 0.8;
+}

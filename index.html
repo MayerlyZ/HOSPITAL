@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de Pacientes - Consultorio Médico</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Panel Izquierdo (formulario) -->
+    <section class="left-panel">
+      <h2>🏥 Consultorio Médico</h2>
+      <p>Registra a tus pacientes rápidamente</p>
+
+      <form id="patientForm">
+        <input type="text" id="patientName" placeholder="Nombre del paciente" required>
+        <input type="number" id="patientAge" placeholder="Edad" required min="1">
+        <button type="submit">Registrar Paciente</button>
+      </form>
+
+      <button id="clearBtn" class="clear">🗑️ Borrar todos</button>
+      <p class="counter">Interacciones: <span id="counter">0</span></p>
+    </section>
+
+    <!-- Panel Derecho (tabla) -->
+    <section class="right-panel">
+      <h3>📋 Pacientes Registrados</h3>
+      <div class="table-wrapper">
+        <table id="patientTable">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Edad</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
