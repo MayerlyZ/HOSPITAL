@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
         <td>${patient.name}</td> <!-- Columna Nombre -->
         <td>${patient.age}</td> <!-- Columna Edad -->
         <td>
-          <button class="deleteBtn" data-index="${index}">🗑️</button> <!-- Botón Eliminar -->
-          <button class="editBtn" data-index="${index}">✏️</button> <!-- Botón Editar -->
+          <button class="deleteBtn" data-index="${index}">🗑️ Delete</button> <!-- Botón Eliminar -->
+          <button class="editBtn" data-index="${index}">✏️ Edit</button> <!-- Botón Editar -->
         </td>
       `;
       tableBody.appendChild(row); // Añadir fila a la tabla
