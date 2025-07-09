@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const editingIndex = form.dataset.editingIndex;
     if (editingIndex !== undefined) {
       // Actualizar paciente existente
-      patients[editingIndex] = { name: capitalizedName, age };
+      patients[editingIndex] = { capitalizedName, age };
 
       // Restaurar el texto del botón submit a "Registrar Paciente"
       const submitBtn = form.querySelector("button[type='submit']");
@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
       delete form.dataset.editingIndex;
     } else {
       // Agregar nuevo paciente al array
-      patients.push({ name:capitalizedName, age });
+      patients.push({ capitalizedName, age });
     }
 
     // Guardar en localStorage y actualizar la tabla
