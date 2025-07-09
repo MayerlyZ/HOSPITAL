@@ -2,7 +2,6 @@
 
 Aplicación web para gestionar pacientes en un consultorio médico con almacenamiento local.
 
-![Preview](assets/preview.png) <!-- Add actual image file in your assets folder -->
 
 ## 🌟 Características
 
@@ -40,6 +39,7 @@ Aplicación web para gestionar pacientes en un consultorio médico con almacenam
 ## 📂 Estructura de Archivos
 
 consultorio-medico/
+
 ├── index.html # Interfaz principal
 ├── style.css # Estilos
 ├── script.js # Lógica de la aplicación
