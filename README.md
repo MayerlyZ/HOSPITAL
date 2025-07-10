@@ -83,7 +83,7 @@ Export data to CSV/PDF
 
 Statistics charts
 
-## localStorage
+## ⏱️ LocalStorage
 Stores data persistently in the user's browser.
 
 Data remains even after refreshing the page or closing the browser.
@@ -101,7 +101,7 @@ let patients = JSON.parse(localStorage.getItem("patients")) || [];
 localStorage.removeItem("patients"); 
 
 ```
-### ⏱️ sessionStorage
+## ⏱️ SessionStorage
 Stores data only during the current browser session.
 
 Data is cleared when the tab or window is closed.
