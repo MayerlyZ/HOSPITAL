@@ -82,11 +82,44 @@ Add filters/search
 Export data to CSV/PDF
 
 Statistics charts
+ localStorage
+Stores data persistently in the user's browser.
 
-## Img
+Data remains even after refreshing the page or closing the browser.
+
+Useful for saving long-term data like patient lists, user preferences, and settings.
+
+```
+// Save patients to localStorage
+localStorage.setItem("patients", JSON.stringify(patients));
+
+// Load patients from localStorage
+let patients = JSON.parse(localStorage.getItem("patients")) || [];
+
+// Clear patients from localStorage
+localStorage.removeItem("patients"); 
+
+```
+⏱️ sessionStorage
+Stores data only during the current browser session.
+
+Data is cleared when the tab or window is closed.
+
+Ideal for temporary values like counters, navigation states, etc.
+```
+// Count page interactions using sessionStorage
+let count = sessionStorage.getItem("patientInteractions") || 0;
+count++;
+sessionStorage.setItem("patientInteractions", count);
+counter.textContent = count;
+
+```
+## 📸 Preview
 ![image](https://github.com/user-attachments/assets/4fe2bd7b-cfa0-40d7-ab8e-ba572a8f17af)
 
-## Url
-https://hopitalmayerly.netlify.app/
+
+## 🔗 Live Demo
+
+👉 https://hopitalmayerly.netlify.app/
 
 
