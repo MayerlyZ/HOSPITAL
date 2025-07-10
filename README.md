@@ -49,6 +49,10 @@ doctor-office/
 
 ├── img/ # Images
 
+##  🖊️  Button Edit
+When you click on edit, the form on the right is enabled, that is, the same fields you filled out to register it.
+
+
 ## 🔧 Installation
 
 No installation required. Just open `index.html` in your browser.
@@ -117,6 +121,7 @@ counter.textContent = count;
 ```
 ## 📸 Preview
 ![image](https://github.com/user-attachments/assets/4fe2bd7b-cfa0-40d7-ab8e-ba572a8f17af)
+
 
 
 ## 🔗 Live Demo
