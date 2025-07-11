@@ -59,10 +59,19 @@ body {
   cursor: pointer;
   font-size: 1rem;
   width: 95%;
+  & img{
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+  }
 }
 
 .left-panel .clear {
   background-color: #8789e4;
+  & img{
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .left-panel .counter {
@@ -120,12 +129,16 @@ body {
 }
 
 .deleteBtn {
-  background-color: #8789e4;
+  background-color: rgba(255, 255, 255, 0.0);
   border: none;
   padding: 8px 12px;
   border-radius: 20px;
   cursor: pointer;
   color: white;
+  & img{
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .filters {
@@ -147,13 +160,17 @@ body {
 }
 
 .editBtn {
-  background-color: #10b981;
+  background-color: rgba(255, 255, 255, 0.0);
   border: none;
   padding: 8px 12px;
   border-radius: 20px;
   cursor: pointer;
   color: white;
   margin-left: 5px;
+  & img{
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .deleteBtn:hover, .editBtn:hover {
