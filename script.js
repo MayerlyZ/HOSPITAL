@@ -1,134 +1,167 @@
-// Espera a que el DOM esté completamente cargado antes de ejecutar el código
+// Wait until the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
-  // Obtener referencias a los elementos del DOM
-  const form = document.getElementById("patientForm"); // Formulario de pacientes
-  const clearBtn = document.getElementById("clearBtn"); // Botón para limpiar todos los pacientes
-  const counter = document.getElementById("counter"); // Contador de interacciones
-  const tableBody = document.querySelector("#patientTable tbody"); // Cuerpo de la tabla
+  // Get references to DOM elements
+  const form = document.getElementById("patientForm"); // Patient form
+  const clearBtn = document.getElementById("clearBtn"); // Clear all patients button
+  const counter = document.getElementById("counter"); // Interaction counter
+  const tableBody = document.querySelector("#patientTable tbody"); // Table body
 
-  // Contador de interacciones usando sessionStorage
-  let count = sessionStorage.getItem("patientInteractions") || 0;
-  count++; // Incrementar el contador
-  sessionStorage.setItem("patientInteractions", count); // Guardar en sessionStorage
-  counter.textContent = count; // Mostrar el contador en la interfaz
+  // Session interaction counter using sessionStorage
+  let count = sessionStorage.getItem("patientInteractions") || 0; // Get current count
+  count++; // Increase by 1 on page load
+  sessionStorage.setItem("patientInteractions", count); // Save it back to sessionStorage
+  counter.textContent = count; // Display on screen
 
-  // Obtener pacientes almacenados en localStorage o inicializar un array vacío
+  // Retrieve patients from localStorage or initialize as empty array
   let patients = JSON.parse(localStorage.getItem("patients")) || [];
 
   /**
-   * Función para renderizar la tabla de pacientes
-   * - Limpia la tabla y la vuelve a llenar con los datos actualizados
+   * Function to render the patients table
    */
   const renderTable = () => {
-    tableBody.innerHTML = ""; // Limpiar el contenido actual de la tabla
+    tableBody.innerHTML = ""; // Clear previous rows
 
-    // Iterar sobre cada paciente y crear una fila en la tabla
+    // Loop through each patient
     patients.forEach((patient, index) => {
-      const row = document.createElement("tr"); // Crear fila
+      // Create a table row with patient info and action buttons
+      const row = document.createElement("tr");
       row.innerHTML = `
-        <td>${patient.name}</td> <!-- Columna Nombre -->
-        <td>${patient.age}</td> <!-- Columna Edad -->
+        <td>${patient.name}</td>
+        <td>${patient.age}</td>
         <td>
-          <button class="deleteBtn" data-index="${index}">🗑️ Delete</button> <!-- Botón Eliminar -->
-          <button class="editBtn" data-index="${index}">✏️ Edit</button> <!-- Botón Editar -->
+          <button class="deleteBtn" data-index="${index}">
+            <img src="./assets/img/delete-icon.png" alt="Delete">
+          </button>
+          <button class="editBtn" data-index="${index}">
+            <img src="./assets/img/edit-icon.png" alt="Edit">
+          </button>
         </td>
       `;
-      tableBody.appendChild(row); // Añadir fila a la tabla
+      tableBody.appendChild(row); // Append the row to the table body
     });
 
-    // Asignar evento click a todos los botones de eliminar
+    // Show patients in the console
+    console.log("Rendering patients:", patients);
+
+    // Add event listeners to all delete buttons
     document.querySelectorAll(".deleteBtn").forEach((btn) => {
       btn.addEventListener("click", (e) => {
-        const index = e.target.dataset.index; // Obtener índice del paciente a eliminar
-        patients.splice(index, 1); // Eliminar paciente del array
-        localStorage.setItem("patients", JSON.stringify(patients)); // Actualizar localStorage
-        renderTable(); // Volver a renderizar la tabla
+        const index = btn.dataset.index;
+
+        // First confirmation
+        const confirm1 = confirm("Are you sure you want to delete this patient?");
+        if (!confirm1) return;
+
+        // Second confirmation
+        const confirm2 = confirm("This action is irreversible. Confirm deletion?");
+        if (!confirm2) return;
+
+        // Delete the patient from the array
+        patients.splice(index, 1);
+        localStorage.setItem("patients", JSON.stringify(patients)); // Update localStorage
+
+        // Re-render the table
+        renderTable();
+
+        // Alert user
+        alert("Patient successfully deleted.");
+        console.log("Patient deleted. Updated list:", patients);
       });
     });
 
-    // Asignar evento click a todos los botones de editar
+    // Add event listeners to all edit buttons
     document.querySelectorAll(".editBtn").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        const index = e.target.dataset.index; // Obtener índice del paciente a editar
-        const patient = patients[index]; // Obtener datos del paciente
+      btn.addEventListener("click", () => {
+        const index = btn.dataset.index; // Get patient index
+        const patient = patients[index]; // Retrieve patient data
 
-        // Llenar el formulario con los datos del paciente seleccionado
+        // Fill form with existing data
         document.getElementById("patientName").value = patient.name;
         document.getElementById("patientAge").value = patient.age;
 
-        // Cambiar el texto del botón de submit a "Actualizar"
+        // Change button text to "Update Patient"
         const submitBtn = form.querySelector("button[type='submit']");
-        submitBtn.textContent = "Actualizar Paciente";
+        submitBtn.textContent = "Update Patient";
 
-        // Guardar el índice del paciente que se está editando en el formulario
+        // Save editing index
         form.dataset.editingIndex = index;
 
-        // Poner el foco en el campo de edad para facilitar la edición
+        // Focus on age input
         document.getElementById("patientAge").focus();
       });
     });
   };
 
-  // Renderizar la tabla al cargar la página
+  // Initial table render
   renderTable();
 
   /**
-   * Evento submit del formulario
-   * - Maneja tanto la creación como la actualización de pacientes
+   * Form submit event handler
+   * - Handles new registrations and updates
    */
   form.addEventListener("submit", (e) => {
-    e.preventDefault(); // Evitar el envío tradicional del formulario
+    e.preventDefault(); // Prevent page reload
 
-    // Obtener valores del formulario
+    // Get and clean input values
     const nameInput = document.getElementById("patientName").value.trim();
 
-    // Capitalizar la primera letra de cada palabra del nombre
+    // Capitalize each word
     const name = nameInput
       .toLowerCase()
-      .split(' ')
+      .split(" ")
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
+      .join(" ");
 
     const age = parseInt(document.getElementById("patientAge").value.trim());
 
-    // Validar datos
+    // Basic validation
     if (!name || isNaN(age) || age < 1) {
-      alert("Por favor, ingresa un nombre válido y una edad mayor a 0.");
+      alert("Please enter a valid name and an age greater than 0.");
       return;
     }
 
-    // Verificar si estamos editando un paciente existente
     const editingIndex = form.dataset.editingIndex;
+
     if (editingIndex !== undefined) {
-      // Actualizar paciente existente
+      // Update existing patient
       patients[editingIndex] = { name, age };
 
-      // Restaurar el texto del botón submit a "Registrar Paciente"
+      // Reset button text and editing index
       const submitBtn = form.querySelector("button[type='submit']");
-      submitBtn.textContent = "Registrar Paciente";
-
-      // Limpiar el índice de edición
+      submitBtn.textContent = "Register Patient";
       delete form.dataset.editingIndex;
+
+      alert("Patient information updated successfully.");
+      console.log("Patient updated:", patients[editingIndex]);
     } else {
-      // Agregar nuevo paciente al array
+      // Add new patient to array
       patients.push({ name, age });
+
+      alert("Patient registered successfully.");
+      console.log("New patient added:", { name, age });
     }
 
-    // Guardar en localStorage y actualizar la tabla
+    // Save to localStorage and re-render
     localStorage.setItem("patients", JSON.stringify(patients));
     renderTable();
 
-    // Limpiar el formulario
+    // Reset form fields
     form.reset();
   });
 
   /**
-   * Evento click del botón "Borrar todos"
-   * - Limpia el localStorage y reinicia la lista de pacientes
+   * "Clear All" button click event
+   * - Removes all patients
    */
   clearBtn.addEventListener("click", () => {
-    localStorage.removeItem("patients"); // Eliminar datos del localStorage
-    patients = []; // Reiniciar el array de pacientes
-    renderTable(); // Volver a renderizar la tabla vacía
+    const confirmClear = confirm("This will remove all patients. Are you sure?");
+    if (!confirmClear) return;
+
+    localStorage.removeItem("patients"); // Clear storage
+    patients = []; // Reset array
+    renderTable(); // Update table
+
+    alert("All patient records have been cleared.");
+    console.log("All patients removed.");
   });
 });
