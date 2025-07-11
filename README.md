@@ -119,7 +119,7 @@ sessionStorage.setItem("patientInteractions", count);
 counter.textContent = count;
 
 ```
-## 📸 Preview
+## 📸 Preview Home
 <img width="1285" height="632" alt="image" src="https://github.com/user-attachments/assets/6ff3a1b9-45a8-4ac8-ac66-e1607ccd5ba7" />
 
 
