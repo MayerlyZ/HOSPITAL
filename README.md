@@ -120,7 +120,8 @@ counter.textContent = count;
 
 ```
 ## 📸 Preview
-![image](https://github.com/user-attachments/assets/4fe2bd7b-cfa0-40d7-ab8e-ba572a8f17af)
+<img width="1285" height="632" alt="image" src="https://github.com/user-attachments/assets/6ff3a1b9-45a8-4ac8-ac66-e1607ccd5ba7" />
+
 
 
 
